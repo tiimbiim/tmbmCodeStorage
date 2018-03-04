@@ -47,7 +47,7 @@ public class Airplane {
 
 	public String toString() {
 
-		String result = "Seating Status:\n----------------------------------------------\n";
+		String result = "";
 		for (int row = 0; row < B52.length; row++) {
 			for (int col = 0; col < B52[row].length; col++) {
 				result += "Passenger info: " + B52[row][col];

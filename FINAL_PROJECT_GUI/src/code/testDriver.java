@@ -4,14 +4,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import gui.MainWindow;
 
-public class testDriver extends myWindow {
+
+public class testDriver extends MainWindow {
 
 	public static void main(String[] args)
 	{	
 		try {
-			myWindow frame = new myWindow();
-			frame.setVisible(true);	
+			MainWindow window = new MainWindow();
+			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -39,5 +41,13 @@ public class testDriver extends myWindow {
 		
 		System.out.println(liberator.toString());
 		waitList.print();
+	}
+	public static String test() {
+		String result;
+		Airplane liberator = new Airplane();
+		liberator.addTicket("timbim", "2241-5115", "Economy", "421-5456", 75, 943, "5792D4T7", "Needs to be in aisle");
+		liberator.addTicket("derek", "2241-5115", "First Class", "421-5456", 75, 943, "5792D4T7", "N/A");
+	     result = liberator.toString();
+	     return result;
 	}
 }

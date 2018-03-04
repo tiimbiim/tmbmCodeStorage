@@ -1,3 +1,4 @@
+package code;
 public class Airplane {
 
 	Ticket[][] B52;

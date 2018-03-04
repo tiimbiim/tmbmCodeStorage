@@ -1,3 +1,4 @@
+package code;
 
 public class adult extends Passenger {
 

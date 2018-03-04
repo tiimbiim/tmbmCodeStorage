@@ -1,3 +1,4 @@
+package code;
 
 public class senior_citizen extends Passenger {
 	

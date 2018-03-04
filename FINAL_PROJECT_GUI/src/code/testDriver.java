@@ -1,7 +1,20 @@
+package code;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-public class testDriver {
 
-	public static void main(String[] args) {
+public class testDriver extends myWindow {
+
+	public static void main(String[] args)
+	{	
+		try {
+			myWindow frame = new myWindow();
+			frame.setVisible(true);	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		adult a = new adult("tim bim", "2254-3135", 'M', 37, "Vacationer", "Money Maker");
 		senior_citizen b = new senior_citizen("matt k", "5531-6425", 'M', 74, "Business", "Kidney Problems");
@@ -21,12 +34,10 @@ public class testDriver {
 	//	waitList.add(a);
 		//waitList.add(b);
 		
-		System.out.println(d.toPassenger(a));
+		//System.out.println(d.toPassenger(a));
 		
 		
 		System.out.println(liberator.toString());
 		waitList.print();
-		
 	}
-
 }

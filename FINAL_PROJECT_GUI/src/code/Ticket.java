@@ -1,6 +1,9 @@
 package code;
 
+import java.util.Random;
+
 public class Ticket {
+	
 	
 	double discount;
 	//String seat;
@@ -8,32 +11,48 @@ public class Ticket {
 	String phone;
 	String NAME;
 	String id;
-	double COST;
+	//double COST;
 	String flightNum;
 	String request;
 	boolean isWaiting;
+public	static double firstMod = 2;
+public	static double businessMod = 1.5;
+	public static	double econMod = 1;
+	public static double distance;
+public static	double totalPrice;
 	
-	public Ticket(String name, String ID, String carriage, String pn, double disco, double price, String flightN, String disability)
+	public Ticket(String name, String ID, String carriage, String pn, double disco, double price, String flightN, double dist, String disability)
 	{
 		NAME = name;
 		id = ID;
-		//seat = seatNum;
 		CL = carriage;
+		
+		if(CL.equalsIgnoreCase("First")) 
+			totalPrice = distance*firstMod;
+		
+		else if(CL.equalsIgnoreCase("Business"))
+			totalPrice = distance*businessMod;
+		
+		else
+			totalPrice = distance*econMod;
+			
 		phone = pn;
 		discount = disco;
-		COST = price;
+		//totalPrice = price;
+		price = totalPrice;
 		flightNum = flightN;
 		request = disability;
 		isWaiting = false;
+		distance = dist;
 	}
 	
-	public double getPrice()
+	/*public double getPrice()
 	{
 		double result;
 		result = COST - discount;
 		
 		return result;
-	}
+	}*/
 	
 	public String toPassenger(Passenger pass)
 	{
@@ -59,7 +78,7 @@ public class Ticket {
 				 "Class: " + CL + " - In Waiting List" +"\n" +
 				 "Flight ID: " + flightNum + "\n" +
 				 "Phone Number: " + phone + "\n" +
-				 "Total Price: $" + (COST - discount) + "\n" +
+				 "Total Price: $" + (totalPrice - discount) + "\n" +
 				 "Discount: $" + discount +"\n" +
 				 "Disabilites/Requests: " + request;;
 		} else{
@@ -68,7 +87,7 @@ public class Ticket {
 				 "Class: " + CL + "\n" +
 				 "Flight ID: " + flightNum + "\n" +
 				 "Phone Number: " + phone + "\n" +
-				 "Total Price: $" + (COST - discount) + "\n" +
+				 "Total Price: $" + (totalPrice - discount) + "\n" +
 				 "Discount: $" + discount +"\n" +
 				 "Disabilites/Requests: " + request;;
 		}

@@ -1,3 +1,4 @@
+
 package code;
 
 public class kid extends Passenger {

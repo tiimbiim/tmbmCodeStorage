@@ -9,9 +9,9 @@ public class waitingClass {
 		waitList = new ArrayList<Ticket>(4);
 	}
 
-	public void add(Ticket per) {
-		waitList.add(per);
-		per.isWaiting = true;
+	public void add(Ticket tick) {
+		waitList.add(tick);
+		tick.isWaiting = true;
 	}
 
 	public void remove(int index) {
@@ -24,7 +24,7 @@ public class waitingClass {
 		
 		System.out.println("Waiting List: " + "\n");
 		for(int i = 0; i < waitList.size(); i++) {
-			System.out.println(waitList.get(i));
+			System.out.println(waitList.get(i) + "\n");
 		}
 	}
 

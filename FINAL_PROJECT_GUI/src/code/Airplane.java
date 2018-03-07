@@ -1,7 +1,7 @@
 package code;
 public class Airplane {
 
-	Ticket[][] B52;
+	public static Ticket[][] B52;
 	int count = 0;
 
 	public Airplane() {
@@ -9,7 +9,11 @@ public class Airplane {
 		count = 0;
 	}
 
-	public void addTicket(String NAME, String id, String CL, String phone, int discount, int COST, String flightN, String request) {
+	
+	public void addTicket(Ticket t) {
+		
+	}
+	public void addTicket(String NAME, String id, String CL, String phone, double discount, double COST, String flightN, double distance, String request ) {
 		
 		// checks for the next empty seat and if the customer has been placed in a seat
 		boolean hasAdded = false;
@@ -17,7 +21,7 @@ public class Airplane {
 			for (int col = 0; col < B52[row].length; col++) {
 				if(B52[row][col] == null)
 				{
-					B52[row][col] = new Ticket(NAME, id, CL, phone, discount, COST, flightN, request);
+					B52[row][col] = new Ticket(NAME, id, CL, phone, discount, COST, flightN, distance, request);
 					hasAdded = true;
 					break;
 				}
@@ -29,7 +33,7 @@ public class Airplane {
 		}
 	}
 
-	public void populate(waitingClass queue) {
+	public void placeInPlane(waitingClass queue) {
 		for (int a = 0; a < B52.length; a++) {
 			for (int b = 0; b < B52[a].length; b++) {
 				B52[a][b] = queue.giveSeat();

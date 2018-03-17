@@ -18,14 +18,17 @@ public class waitingClass {
 		waitList.remove(index);
 	}
 
-	public void print() {
+	public String print() {
 		//System.out.println(waitList + "\n" + "Currently on waiting list");
 		//System.out.println(waitList);
 		
+		String result = "";
+		
 		System.out.println("Waiting List: " + "\n");
 		for(int i = 0; i < waitList.size(); i++) {
-			System.out.println(waitList.get(i) + "\n");
+			result = waitList.get(i) + "\n";
 		}
+		return result;
 	}
 
 	public Ticket giveSeat() {

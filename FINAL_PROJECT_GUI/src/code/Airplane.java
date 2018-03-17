@@ -1,6 +1,9 @@
 package code;
 public class Airplane {
 
+	static boolean hasAdded = false;
+	
+	public static Ticket[][] temp;
 	public static Ticket[][] B52;
 	int count = 0;
 
@@ -16,7 +19,7 @@ public class Airplane {
 	public void addTicket(String NAME, String id, String CL, String phone, double discount, double COST, String flightN, double distance, String request ) {
 		
 		// checks for the next empty seat and if the customer has been placed in a seat
-		boolean hasAdded = false;
+		hasAdded = false;
 		for (int row = 0; row < B52.length; row++) {
 			for (int col = 0; col < B52[row].length; col++) {
 				if(B52[row][col] == null)
@@ -32,6 +35,34 @@ public class Airplane {
 
 		}
 	}
+	
+	public static String checkSeat(int seatRow, int seatCol)
+	{
+		String result = "";
+		 System.out.println(B52[seatRow][seatCol]);
+		 
+		 if(B52[seatRow][seatCol] == null)
+			 result = "This seat is empty";
+		 else
+			 result = "Seat " + seatRow + ", " + seatCol + " is taken";
+		 
+		 return result;
+		
+	}
+	/*
+	public static void removeFromFlight(int t, int v)
+	{
+		temp = new Ticket[10][10];
+		
+		for (int a = 0; a < B52.length; a++)
+			for (int b = 0; b < B52[a].length; b++)
+			{
+				B52[t][v] = temp[a][b];
+			}
+		
+		
+	}
+	*/
 
 	public void placeInPlane(waitingClass queue) {
 		for (int a = 0; a < B52.length; a++) {

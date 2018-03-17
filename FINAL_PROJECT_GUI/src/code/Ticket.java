@@ -54,16 +54,32 @@ public static	double totalPrice;
 		return result;
 	}*/
 	
-	public String toPassenger(Passenger pass)
+	static public String toAdult(adult a)
 	{
 /*	String result =	"Name: " + NAME + "\n" +
 				 "ID: "   + id   + "\n" +
 				 "Gender: " + Passenger.GENDER + "\n" +
 				 "Age: " + Passenger.AGE + "\n" +
 				 "Reason of Travel: " + Passenger.TYPE; */
-		String result = pass.toString();
+		
+		String result = a.toString();
 		
 	return result;
+	}
+	
+	static public String toSeniorCitizen(senior_citizen s) {
+		
+		String result = s.toString();
+		
+		return result;
+	}
+	
+	static public String toKid(kid k) {
+		
+		String result = k.toString();
+		
+		return result;
+		
 	}
 
 	

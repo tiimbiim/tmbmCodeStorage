@@ -118,6 +118,11 @@ public class MainWindow {
 		Label requestLabel = new Label(shell, SWT.NONE);
 		Label distLabel= new Label(shell, SWT.NONE);
 		Label waitLabel = new Label(shell, SWT.NONE);
+		Label seatRowLbl = new Label(shell, SWT.NONE);
+		Label seatColLbl = new Label(shell, SWT.NONE);
+		Text seatColText = new Text(shell, SWT.NONE);
+		Text seatRowText = new Text(shell, SWT.NONE);
+		Button checkSeat = new Button(shell, SWT.NONE);
 		//seatRowText.setBounds(435, 210, 250, 50);
 		//seatColText.setBounds(490, 210, 250, 50);
 		
@@ -128,18 +133,17 @@ public class MainWindow {
 				System.out.println("Checking available seats");
 				
 				lblNewLabel.setVisible(false);
-				label.setText("");
-				nameLabel.setText("");
-				IDLabel.setText("");
-				classCombo.setText("");
-				pnLabel.setText("");
-				priceLabel.setText("");
-				requestLabel.setText("");
+				seatColLbl.setVisible(true);
+				checkSeat.setVisible(true);
+				seatRowLbl.setVisible(true);
+				label.setVisible(true);
+				nameLabel.setVisible(false);
+				IDLabel.setVisible(false);
+				classCombo.setVisible(false);
+				pnLabel.setVisible(false);
+				priceLabel.setVisible(false);
+				requestLabel.setVisible(false);
 				
-				Label seatRowLbl = new Label(shell, SWT.NONE);
-				Label seatColLbl = new Label(shell, SWT.NONE);
-				Text seatColText = new Text(shell, SWT.NONE);
-				Text seatRowText = new Text(shell, SWT.NONE);
 				
 				label.setText("Please enter the seat row number and \ncolumn number");
 
@@ -155,15 +159,14 @@ public class MainWindow {
 				seatColText.setBounds(500, 75, 125, 20);
 				seatRowText.setBounds(500, 100, 125, 20);
 				
-				Button checkSeat = new Button(shell, SWT.NONE);
-				checkSeat.setBounds(27, 390, 150, 25);
+				checkSeat.setBounds(27, 650, 150, 30);
 				checkSeat.setText("Press to check availability");
 			
 				checkSeat.addSelectionListener(new SelectionAdapter() {
 					@Override
 					public void widgetSelected(SelectionEvent e) {
 						
-						Label seatCheckLbl = new Label(shell, SWT.BORDER);
+						//Label seatCheckLbl = new Label(shell, SWT.BORDER);
 						Label seatCheckLbl2 = new Label(shell, SWT.BORDER);
 						
 						//seatCheckLbl.setBounds(500, 125, 125, 20);
@@ -172,6 +175,9 @@ public class MainWindow {
 						
 						
 						seatCheckLbl2.setText(Airplane.checkSeat(Integer.parseInt(seatRowText.getText()), Integer.parseInt(seatColText.getText())));
+						
+						//The button works and it sends back a message but it says that seats that are taken
+						//are empty
 						
 						
 					}
@@ -188,13 +194,17 @@ public class MainWindow {
 				
 				System.out.println("Showing Ticket Info");
 				
-				label.setText("");
-				nameLabel.setText("");
-				IDLabel.setText("");
-				classCombo.setText("");
-				pnLabel.setText("");
-				priceLabel.setText("");
-				requestLabel.setText("");
+				lblNewLabel.setVisible(true);
+				label.setVisible(false);
+				nameLabel.setVisible(false);
+				IDLabel.setVisible(false);
+				classCombo.setVisible(false);
+				pnLabel.setVisible(false);
+				priceLabel.setVisible(false);
+				requestLabel.setVisible(false);
+				seatColLbl.setVisible(false);
+				seatRowLbl.setVisible(false);
+				checkSeat.setVisible(false);
 				
 				lblNewLabel.setText(testDriver.printTicket());	
 			}
@@ -206,13 +216,13 @@ public class MainWindow {
 				
 				System.out.println("Showing Passenger Info");
 				
-				label.setText("");
-				nameLabel.setText("");
-				IDLabel.setText("");
-				classCombo.setText("");
-				pnLabel.setText("");
-				priceLabel.setText("");
-				requestLabel.setText("");
+				label.setVisible(false);
+				nameLabel.setVisible(false);
+				IDLabel.setVisible(false);
+				classCombo.setVisible(false);
+				pnLabel.setVisible(false);
+				priceLabel.setVisible(false);
+				requestLabel.setVisible(false);
 				
 				lblNewLabel.setText(testDriver.toAdult(testDriver.a));	
 				//lblNewLabel.setText(testDriver.toKid(testDriver.c));
@@ -238,6 +248,14 @@ public class MainWindow {
 				
 				
 				lblNewLabel.setVisible(false);	
+				label.setVisible(true);
+				nameLabel.setVisible(true);
+				IDLabel.setVisible(true);
+				classCombo.setVisible(true);
+				pnLabel.setVisible(true);
+				priceLabel.setVisible(true);
+				requestLabel.setVisible(true);
+				
 				
 				
 				label.setBounds(300,12,219,35);
@@ -250,17 +268,14 @@ public class MainWindow {
 				Text nameText = new Text(shell, SWT.NONE);
 				nameText.setBounds(435, 75, 250, 20);
 				
-				/******************************
-				 ******************************/
+
 				
 				IDLabel.setBounds(300, 100, 125, 12);
 				IDLabel.setText("Please enter an ID");
 				
 				Text IDText = new Text(shell, SWT.NONE);
 				IDText.setBounds(435, 100, 250, 20);
-				
-				/******************************
-				 ******************************/
+
 				
 				Label classLabel = new Label(shell, SWT.NONE);
 				classLabel.setBounds(300, 125, 175, 20);
@@ -287,8 +302,7 @@ public class MainWindow {
 					
 					}
 				}); 
-						/*********************************
-						 ********************************/
+
 						pnLabel.setBounds(300, 150, 175, 15);
 						pnLabel.setText("Please enter your phone number");
 						
@@ -296,8 +310,7 @@ public class MainWindow {
 						pnText.setBounds(485, 150, 200, 20);
 						
 						
-						/********************************
-						 ******************************/
+
 						
 						distLabel.setBounds(300, 175, 175, 20);
 						distLabel.setText("Please select a destination");
@@ -332,15 +345,9 @@ public class MainWindow {
 							
 							if(classCombo.getText() != "" && destCombo.getText() != "") {
 								priceLabel.setBounds(300, 200, 165, 12);
-								priceLabel.setText("Total Price: $" + (decForm.format(MainWindow.fullPrice)));}
-							else if(classCombo.getText() == "") {
-								
-							}else {
-								
+								priceLabel.setText("Total Price: $" + (decForm.format(MainWindow.fullPrice)));
 							}
-
-							
-							}
+						}
 						});
 						
 						Button addPassBtn = new Button(shell, SWT.NONE);
@@ -353,7 +360,7 @@ public class MainWindow {
 								
 							}
 						});
-						addPassBtn.setBounds(27, 390, 150, 25);
+						addPassBtn.setBounds(27, 650, 150, 30);
 						addPassBtn.setText("Press to purchase ticket");
 						
 					}
@@ -376,7 +383,7 @@ public class MainWindow {
 				lblNewLabel.setVisible(false);
 				waitLabel.setBounds(291, 10, 400, 729);
 				
-				waitLabel.setText(testDriver.waitList.print());
+				//waitLabel.setText(testDriver.waitList.print());
 			}
 		});
 		waitBtn.setBounds(10, 403, 256, 50);
@@ -384,6 +391,7 @@ public class MainWindow {
 
 		
 	}
-	}
+}
 
+	
 

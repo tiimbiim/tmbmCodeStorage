@@ -1,6 +1,7 @@
 package code;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Ticket {
 	
@@ -21,7 +22,7 @@ public	static double businessMod = 1.5;
 	public static double distance;
 public static	double totalPrice;
 	
-	public Ticket(String name, String ID, String carriage, String pn, double disco, double price, String flightN, double dist, String disability)
+	public Ticket(String name, String ID, String carriage, String pn, double disco, String flightN, double dist, String disability)
 	{
 		NAME = name;
 		id = ID;
@@ -39,7 +40,7 @@ public static	double totalPrice;
 		phone = pn;
 		discount = disco;
 		//totalPrice = price;
-		price = totalPrice;
+	//	price = totalPrice;
 		flightNum = flightN;
 		request = disability;
 		isWaiting = false;
@@ -53,6 +54,50 @@ public static	double totalPrice;
 		
 		return result;
 	}*/
+	
+	public static void purchaseTicket() {
+		
+		String name, id, clss, pn, fNum, dis;
+		int seatRow, seatCol;
+		int disc, tPrice, dist;
+		
+		Scanner scan = new Scanner(System.in);
+		Scanner scanName = new Scanner(System.in);
+		Scanner scanID = new Scanner(System.in);
+		Scanner scanCL = new Scanner(System.in);
+		Scanner scanPN = new Scanner(System.in);
+		Scanner scanDisc = new Scanner(System.in);
+		Scanner scantPrice = new Scanner(System.in);
+		Scanner scanfNum = new Scanner(System.in);
+		Scanner scanDist = new Scanner(System.in);
+		Scanner scanDis = new Scanner(System.in);
+		
+		System.out.print("Please enter the following information: \nName: " );
+		name = scanName.nextLine();
+		System.out.print("ID: ");
+		id = scanID.nextLine();
+		System.out.print("Class: ");
+		clss = scanCL.nextLine();
+		System.out.print("Phone Number: ");
+		pn = scanPN.nextLine();
+		System.out.print("Discount: ");
+		disc = scanDisc.nextInt();
+		System.out.print("Flight Number: ");
+		fNum = scanfNum.nextLine();
+		System.out.print("Distance: ");
+		dist = scanDist.nextInt();
+		System.out.print("Disability/Request: ");
+		dis = scanDis.nextLine();
+		
+		
+		Airplane.addTicket(name, id, clss, pn, disc, fNum, dist, dis);
+		
+		System.out.println("\nUpdating passenger list \n-------------------------------------------------------------\n-------------------------------------------------------------");
+		
+		Airplane.print();
+		
+		
+	}
 	
 	static public String toAdult(adult a)
 	{
@@ -104,6 +149,7 @@ public static	double totalPrice;
 				 "Flight ID: " + flightNum + "\n" +
 				 "Phone Number: " + phone + "\n" +
 				 "Total Price: $" + (totalPrice - discount) + "\n" +
+				 "Distance: " + distance + "mi\n" +
 				 "Discount: $" + discount +"\n" +
 				 "Disabilites/Requests: " + request;;
 		}

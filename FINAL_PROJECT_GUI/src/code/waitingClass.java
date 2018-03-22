@@ -18,7 +18,7 @@ public class waitingClass {
 		waitList.remove(index);
 	}
 
-	public String print() {
+	public void print() {
 		//System.out.println(waitList + "\n" + "Currently on waiting list");
 		//System.out.println(waitList);
 		
@@ -26,10 +26,12 @@ public class waitingClass {
 		
 		System.out.println("Waiting List: " + "\n");
 		for(int i = 0; i < waitList.size(); i++) {
-			result = waitList.get(i) + "\n";
+			System.out.println(waitList.get(i) + "\n");
 		}
-		return result;
+	
 	}
+	
+	
 
 	public Ticket giveSeat() {
 		if (waitList.size() <= 0) {

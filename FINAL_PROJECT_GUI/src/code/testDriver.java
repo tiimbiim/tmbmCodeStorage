@@ -30,8 +30,8 @@ public class testDriver extends MainWindow {
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		*/
+		} */
+		
 		
 		
 		String name, id, clss, pn, fNum, dis;
@@ -46,55 +46,69 @@ public class testDriver extends MainWindow {
 		String input;
 		String username, password;
 		
-		Airplane.addTicket("timbim", "2241-5115", "Economy", "421-5456", 75, "5792D4T7", 500.8, "Needs to be in aisle");
-		Airplane.addTicket("derek", "3876-5325", "First", "471-5526", 75, "5112P4T8", 476.17, "N/A");
+		Airplane.addTicket("timbim", "2241-5115", "Economy", "421-5456", 75, Airplane.generateFlightNumber(), 500.8, "Needs to be in aisle");
+		Airplane.addTicket("derek", "3876-5325", "First", "471-5526", 75, Airplane.generateFlightNumber(), 476.17, "N/A");
 		
 		waitList.add(d);
 		waitList.add(e);
 		
+		/*********************************************************
+		 ********************************************************/
 		
 		System.out.print("Enter your username: ");
 		username = scan.nextLine();
 		System.out.print("Enter your password: ");
 		input = scan.nextLine();
 		
-		if(input != "")
-			loop = true;
+		System.out.println("\n\tWelcome " + username);
 		
-		System.out.println("\n\t\tWelcome user");	
+		while(!input.equalsIgnoreCase("Exit")) {
 		
-		
-		System.out.println("What would you like to do? Enter \"Ticket Info\" to view ticket info, \"Passenger Info\" to view passenger info, \"Wait List Info\" to view the waiting list, "
-				+ "\n\"Purchase a Ticket\" to purchase a ticket, or \"Check a seat\" to check a seat's availability");
+		System.out.println("\nWhat would you like to do? \n\"1\" to view ticket info, \n\"2\" to view passenger info, "
+				+ "\n\"3\" to view the waiting list, "
+				+ "\n\"4\" to purchase a ticket, \n\"5\" to check a seat's availability,"
+				+ "\n\"6\" to remove a passenger, or \n\"Exit\" to quit");
 		
 		input = scan.nextLine();
+		System.out.println("------------------------------------------------------------------------------------");
 		
-		while (input != "" && loop == true) {
 		
-		if (input.equalsIgnoreCase("ticket info")) 
+		if (input.equalsIgnoreCase("1")) 
 			System.out.println(liberator.toString());
 		
-		else if(input.equalsIgnoreCase("passenger info"))
+		else if(input.equalsIgnoreCase("2"))
 			System.out.print(toAdult(a));
 
-		else if(input.equalsIgnoreCase("wait list info"))
+		else if(input.equalsIgnoreCase("3"))
 			waitList.print();
 		
-		else if(input.equalsIgnoreCase("purchase a ticket")) {
+		else if(input.equalsIgnoreCase("4")) {
 			
 			Ticket.purchaseTicket();
 			
 			System.out.println("Would you like to purchase another ticket (y/n)?");
 			input = scan.nextLine();
-			if(input.equalsIgnoreCase("y"))
+			if(input.equalsIgnoreCase("y")) 
 				Ticket.purchaseTicket();
-				
-			else	 
-				System.exit(0);
+			
 			
 		}
-		
-		if(input.equalsIgnoreCase("check a seat")) {
+			
+		else if (input.equalsIgnoreCase("6")) {
+			
+			Airplane.removePassenger();	
+			System.out.println("\n\nUpdating Flight Plane \n-------------------------------------------------------------\n-------------------------------------------------------------");
+			Airplane.print();
+			
+			System.out.println("Would you like to remove another passenger (y/n)?");
+			input = scan.nextLine();
+			if(input.equalsIgnoreCase("y")) 
+				Airplane.removePassenger();
+			
+		}
+			
+
+		else if(input.equalsIgnoreCase("5")) {
 			System.out.println("Please enter a seat row and column");
 			seatRow = scan.nextInt();
 			seatCol = scan.nextInt();
@@ -103,8 +117,12 @@ public class testDriver extends MainWindow {
 			
 		}
 		
-		else 
-			System.exit(0);
+		//else 
+			//System.exit(0);
+		
+		}
+		
+		System.out.println("Goodbye, " + username);
 }	
 		// oooooof rip gia
 		
@@ -115,10 +133,6 @@ public class testDriver extends MainWindow {
 		//System.out.println(Airplane.checkSeat(0,1));
 		//System.out.println(Airplane.checkSeat(2, 0));
 		
-
-		
-		
-	}
 	
 	public static String printTicket() {
 		String result;

@@ -51,7 +51,8 @@ public class MainWindow {
 	public static void main(String[] args) {
 		
 		Airplane n = new Airplane();
-		
+		Airplane.addTicket("timbim", "2241-5115", "Economy", "421-5456", 75, "5792D4T7", 500.8, "Needs to be in aisle");
+		Airplane.addTicket("derek", "3876-5325", "First", "471-5526", 75, "5112P4T8", 476.17, "N/A");
 		
 		try {
 			MainWindow window = new MainWindow();
@@ -354,9 +355,25 @@ public class MainWindow {
 						addPassBtn.addSelectionListener(new SelectionAdapter() {
 							@Override
 							public void widgetSelected(SelectionEvent e) {
-								double distance = MainWindow.flightDistance;
-								double totalPrice = MainWindow.fullPrice;
-								testDriver.liberator.addTicket(nameText.getText(), IDText.getText(), classCombo.getText(), pnText.getText(), discount, MainWindow.fullPrice, flightNumb, MainWindow.flightDistance , requestLabel.getText());
+		
+								
+								
+								Airplane.addTicket(nameText.getText(), IDText.getText(), classCombo.getText(), pnText.getText(), discount, flightNumb, MainWindow.flightDistance , requestLabel.getText());
+								
+								lblNewLabel.setVisible(true);
+								label.setVisible(false);
+								nameLabel.setVisible(false);
+								IDLabel.setVisible(false);
+								classCombo.setVisible(false);
+								pnLabel.setVisible(false);
+								priceLabel.setVisible(false);
+								requestLabel.setVisible(false);
+								seatColLbl.setVisible(false);
+								seatRowLbl.setVisible(false);
+								checkSeat.setVisible(false);
+								
+								lblNewLabel.setText(testDriver.printTicket());	
+								
 								
 							}
 						});

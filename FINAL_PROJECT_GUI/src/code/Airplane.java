@@ -1,4 +1,7 @@
 package code;
+import java.util.Random;
+import java.util.Scanner;
+
 public class Airplane {
 
 	static boolean hasAdded = false;
@@ -39,7 +42,9 @@ public class Airplane {
 	public static String checkSeat(int seatRow, int seatCol)
 	{
 		String result = "";
-		 System.out.println(B52[seatRow][seatCol]);
+		if(B52[seatRow][seatCol]==null)
+			System.out.println("THIS SEAT IS NULL");
+		 //System.out.println(B52[seatRow][seatCol]);
 		 
 		 if(B52[seatRow][seatCol] == null)
 			 result = "This seat is empty";
@@ -49,20 +54,39 @@ public class Airplane {
 		 return result;
 		
 	}
-	/*
-	public static void removeFromFlight(int t, int v)
+	
+	public static void removeFromFlight(int seatRow, int seatCol)
 	{
-		temp = new Ticket[10][10];
-		
-		for (int a = 0; a < B52.length; a++)
-			for (int b = 0; b < B52[a].length; b++)
-			{
-				B52[t][v] = temp[a][b];
-			}
-		
+		String message = "";
+		 System.out.println("Removing " + B52[seatRow][seatCol]);
+		 
+		 if(B52[seatRow][seatCol] == null)
+			 message = "Nothing to remove.";
+		 else {
+			 B52[seatRow][seatCol] = null;
+			 message = "Removed selected customer.";
+		 
+		 }
 		
 	}
-	*/
+	
+	public static void removePassenger() {
+		
+		Scanner scan = new Scanner(System.in);
+		int seatColInp, seatRowInp;
+		
+		System.out.println("Please enter the seat row and column" );
+		
+		System.out.print("SeatRow: ");
+		seatRowInp = scan.nextInt();
+		
+		System.out.print("\nSeatCol: ");
+		seatColInp = scan.nextInt();
+		
+		Airplane.removeFromFlight(seatRowInp, seatColInp);	
+	
+	}
+	
 
 	public void placeInPlane(waitingClass queue) {
 		for (int a = 0; a < B52.length; a++) {
@@ -93,5 +117,17 @@ public class Airplane {
 		}
 
 		return result;
+	}
+	
+	public static String generateFlightNumber()
+	{
+		Random rand = new Random();
+		
+		int fourDigits = 1 + rand.nextInt(9999);
+		char firstChar = (char) (65 + rand.nextInt(26));
+		int secondDigit = 1 + rand.nextInt(9);
+		char secondChar = (char) (65 + rand.nextInt(26));
+		
+		return String.format("%04d%s%d%s", fourDigits, firstChar, secondDigit, secondChar);
 	}
 }

@@ -82,15 +82,13 @@ public static	double totalPrice;
 		pn = scanPN.nextLine();
 		System.out.print("Discount: ");
 		disc = scanDisc.nextInt();
-		System.out.print("Flight Number: ");
-		fNum = scanfNum.nextLine();
 		System.out.print("Distance: ");
 		dist = scanDist.nextInt();
 		System.out.print("Disability/Request: ");
 		dis = scanDis.nextLine();
 		
 		
-		Airplane.addTicket(name, id, clss, pn, disc, fNum, dist, dis);
+		Airplane.addTicket(name, id, clss, pn, disc, Airplane.generateFlightNumber(), dist, dis);
 		
 		System.out.println("\nUpdating passenger list \n-------------------------------------------------------------\n-------------------------------------------------------------");
 		

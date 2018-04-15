@@ -1,4 +1,3 @@
-
 package gui;
 
 import org.eclipse.swt.widgets.Display;
@@ -393,3 +392,6 @@ public class MainWindow {
 		
 	}
 }
+
+	
+

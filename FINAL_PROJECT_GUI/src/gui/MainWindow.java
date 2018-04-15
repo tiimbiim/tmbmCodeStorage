@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 
 import code.Airplane;
 import code.Ticket;
-import code.testDriver;
+import code.Driver;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -87,7 +87,7 @@ public class MainWindow {
 	
 	public void createContents() {
 		Airplane n = new Airplane();
-		testDriver t = new testDriver();
+		Driver t = new Driver();
 		shell = new Shell();
 		shell.setSize(800, 600);
 		shell.setText("Airline Reservation System");
@@ -206,7 +206,7 @@ public class MainWindow {
 				seatRowLbl.setVisible(false);
 				checkSeat.setVisible(false);
 				
-				lblNewLabel.setText(testDriver.printTicket());	
+				lblNewLabel.setText(Driver.printTicket());	
 			}
 			});
 	
@@ -224,7 +224,7 @@ public class MainWindow {
 				priceLabel.setVisible(false);
 				requestLabel.setVisible(false);
 				
-				lblNewLabel.setText(testDriver.toAdult(testDriver.a));	
+				lblNewLabel.setText(Driver.toAdult(Driver.a));	
 				//lblNewLabel.setText(testDriver.toKid(testDriver.c));
 				//lblNewLabel.setText(testDriver.toSenior(testDriver.b)); 
 			}
@@ -356,7 +356,7 @@ public class MainWindow {
 							public void widgetSelected(SelectionEvent e) {
 								double distance = MainWindow.flightDistance;
 								double totalPrice = MainWindow.fullPrice;
-								testDriver.liberator.addTicket(nameText.getText(), IDText.getText(), classCombo.getText(), pnText.getText(), discount, MainWindow.fullPrice, flightNumb, MainWindow.flightDistance , requestLabel.getText());
+								Driver.liberator.addTicket(nameText.getText(), IDText.getText(), classCombo.getText(), pnText.getText(), discount, MainWindow.fullPrice, flightNumb, MainWindow.flightDistance , requestLabel.getText());
 								
 							}
 						});

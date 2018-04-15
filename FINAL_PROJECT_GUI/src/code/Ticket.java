@@ -22,7 +22,7 @@ public	static double businessMod = 1.5;
 	public static double distance;
 public static	double totalPrice;
 	
-	public Ticket(String name, String ID, String carriage, String pn, double disco, String flightN, double dist, String disability)
+	public Ticket(String name, String ID, String carriage, String pn, int disco, String flightN, int dist, String disability)
 	{
 		NAME = name;
 		id = ID;
@@ -52,14 +52,17 @@ public static	double totalPrice;
 		double result;
 		result = COST - discount;
 		
-		return result;
+		return result; 
 	}*/
 	
 	public static void purchaseTicket() {
 		
-		String name, id, clss, pn, fNum, dis;
+		String name, id, clss, pn, dis, flight;
+		String fNum;
 		int seatRow, seatCol;
 		int disc, tPrice, dist;
+		
+		fNum = "0";
 		
 		Scanner scan = new Scanner(System.in);
 		Scanner scanName = new Scanner(System.in);
@@ -71,8 +74,11 @@ public static	double totalPrice;
 		Scanner scanfNum = new Scanner(System.in);
 		Scanner scanDist = new Scanner(System.in);
 		Scanner scanDis = new Scanner(System.in);
+		Scanner scanFlight = new Scanner(System.in);
 		
-		System.out.print("Please enter the following information: \nName: " );
+		System.out.print("Please enter the following information: \nFlight (Liberator/Zero): " );
+		flight = scanFlight.nextLine();
+		System.out.print("Name: ");
 		name = scanName.nextLine();
 		System.out.print("ID: ");
 		id = scanID.nextLine();
@@ -82,19 +88,25 @@ public static	double totalPrice;
 		pn = scanPN.nextLine();
 		System.out.print("Discount: ");
 		disc = scanDisc.nextInt();
-		System.out.print("Flight Number: ");
-		fNum = scanfNum.nextLine();
 		System.out.print("Distance: ");
 		dist = scanDist.nextInt();
 		System.out.print("Disability/Request: ");
 		dis = scanDis.nextLine();
 		
-		
-		Airplane.addTicket(name, id, clss, pn, disc, fNum, dist, dis);
-		
+		if(flight.equalsIgnoreCase("liberator")) {
+		Airplane.addTicketB52(name, id, clss, pn, disc, fNum, dist, dis);
 		System.out.println("\nUpdating passenger list \n-------------------------------------------------------------\n-------------------------------------------------------------");
 		
-		Airplane.print();
+		Airplane.printB52();
+		}
+		
+		
+		if(flight.equalsIgnoreCase("zero")) {
+		Airplane.addTicketA6M1(name, id, clss, pn, disc, fNum, dist, dis);	
+		System.out.println("\nUpdating passenger list \n-------------------------------------------------------------\n-------------------------------------------------------------");
+		
+		Airplane.printA6M1();
+		}
 		
 		
 	}

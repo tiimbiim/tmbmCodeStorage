@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package code;
 
 import java.util.Random;
@@ -332,3 +333,5 @@ public String toStringB52() {
 	return result;
 }
 }
+=======
+>>>>>>> 1d18286e73acd8ff567764c8a088b798c4a0196f

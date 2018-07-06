@@ -22,10 +22,10 @@ public class text_FileReader {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		PrintWriter pw = new PrintWriter(new File("C:\\Users\\shingo\\Desktop\\tmbm\\control2.csv"));
+		PrintWriter pw = new PrintWriter(new File("C:\\Users\\TV\\Desktop\\tmbm\\laptop_test27.csv"));
         StringBuilder sb = new StringBuilder();
 		
-		String filename = "C:\\Users\\shingo\\Desktop\\tmbm\\Tim\\check";
+		String filename = "C:\\Users\\TV\\Desktop\\tmbm\\Tim\\check";
 		
 		File fr;
 		String data;
@@ -39,6 +39,17 @@ public class text_FileReader {
 		SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
 		
 		System.out.println("A");
+		
+		sb.append("Date");
+        sb.append(',');
+        sb.append("People Online");
+        sb.append(',');
+        sb.append("File No.");
+        sb.append('\n');
+		
+		for (int t = 1; t < 90; t++) 
+			fr1.add(new FileReader(filename + 73 + ".txt"));
+		
 	    for(int loopNum = 101; loopNum<=convert;loopNum++)
 	    {
 	    	
@@ -63,20 +74,30 @@ public class text_FileReader {
 	          System.out.println(loopNum+"Online: " +numOnline);
 	        //System.out.println(currentData);
 		
-		sb.append("Date");
-        sb.append(',');
-        sb.append("People Online");
-        sb.append('\n');
-		
-		for(int g = 1; g < 89; g++) {
-			fr = new File(filename + 89 + ".txt");
-
-			System.out.println(sdf.format(fr.lastModified()));
-
-		        sb.append(sdf.format(fr.lastModified()));
+	          sb.append(numOnline + "\n");
 		        sb.append(',');
 		        sb.append(numOnline);
+		        sb.append(',');
+		        sb.append(loopNum);
 		        sb.append('\n');
+	          
+	          numOnline = 0;
+	          searchIndex = 0;
+	          currentData = "";
+	          i=0;
+	    }  
+		
+		for(int g = 1; g < 90; g++) {
+			fr = new File(filename + 73 + ".txt");
+		//	System.out.println(sdf.format(fr1.get(0).lastModified()));
+
+		        sb.append(sdf.format(fr.lastModified()));
+		 /*       sb.append(',');
+		        sb.append(numOnline);
+		        sb.append(',');
+		        sb.append(g);
+		        sb.append('\n');
+		        */
 		}
 		
 			pw.write(sb.toString());
@@ -86,5 +107,3 @@ public class text_FileReader {
 	}
 
 }
-}
-

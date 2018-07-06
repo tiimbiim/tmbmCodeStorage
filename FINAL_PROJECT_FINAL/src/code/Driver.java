@@ -16,12 +16,9 @@ public class Driver extends MainWindow {
 
 	public static Airplane liberator;
 	public static Airplane zero;
-//	public static adult a = new adult("tim bim", "2254-3135", 'M', 37, "Vacation", "Money Maker");
-//	public static senior_citizen b = new senior_citizen("matt k", "5531-6425", 'M', 74, "Business", "Kidney Problems");
-	public static kid c = new kid("gia", "4224-7554", 'F', 12, "Lost", "Without Parents");
+	
 	public static waitingClass waitList = new waitingClass();
-//	public static Ticket d = new Ticket("tim bim", "2254-3135", "Vacation", "310-8747", 53.51, "7848D4Y7", 1231, "Needs to be in aisle");
-//	public static	Ticket e = new Ticket("derek", "5412-9784", "Vacation", "644-5426", 0.0, "6412D432D", 123123, "N/A");
+
 	
 	public static void main(String[] args)
 	{	
@@ -46,31 +43,27 @@ public class Driver extends MainWindow {
 		
 		String input;
 		String username, password;
-		Airplane.addTicketB52("timbim", "2241-5115", "Economy", "421-5456", 75, "5792D4T7", 500, "Needs to be in aisle");
-		Airplane.addTicketB52("derek", "3876-5325", "First", "471-5526", 75, "5112P4T8", 476, "N/A");
+		Ticket bob = new Ticket("Bob Sedofic", "3217-8762", "Business", "332-8921", 50, "3123L5O6", 300, "n/a");
+		Airplane.addTicketB52("timbim", "2241-5115", "Economy", "421-5456", 75, "5792D4T7", 500, "Needs to be in aisle");  //adds a passenger to flight b52
+		Airplane.addTicketB52("derek", "3876-5325", "First", "471-5526", 75, "5112P4T8", 476, "N/A");  //adds another passenger to flight b52
 		
-		Airplane.addTicketA6M1("tim man", "2313123", "First", "424-4241", 100, "32131231231", 333, "IQ is so high");
+		Airplane.addTicketA6M1("tim man", "2313123", "First", "424-4241", 100, "32131231231", 333, "IQ is so high");  //adds passenger to flight a6m1
 		
-		
-		/*
-		waitList.add(d);
-		waitList.add(e);
-		*/
+		waitList.add(bob);
 		
 		System.out.print("Enter your username: ");
-		username = scan.nextLine();
-		System.out.print("Enter your password: ");
+		username = scan.nextLine();                               //both of these are just cosmetic details
+		System.out.print("Enter your password: ");    
 		input = scan.nextLine();
 		
-	//if(input != "")
-		//	loop = true;
 		
 		System.out.println("\n\tWelcome, " + username);	
 		
 		while (input != "exit") {
 		
-			System.out.println("What would you like to do? Enter \n\"1\" to view ticket info\n\"2\" to move a passenger off the waiting list\n\"3\" to view the waiting list, "
-				+ "\n\"4\" to purchase a ticket\n\"5\" to check a seat's availability\n\"Exit\" to exit the system");
+			System.out.println("What would you like to do? Enter \n\"1\" to view ticket info\n\"2\" to view the waiting list, "
+							 + "\n\"3\" to purchase a ticket\n\"4\" to check a seat's availability\n\"5\" to reserve a seat"
+							 + "\n\"Exit\" to exit the system");
 		
 				input = scan.nextLine();
 		
@@ -84,12 +77,9 @@ public class Driver extends MainWindow {
 		}
 		
 		if(input.equalsIgnoreCase("2"))
-		
-
-		if(input.equalsIgnoreCase("3"))
 			waitList.print();
 		
-		if(input.equalsIgnoreCase("4")) {
+		if(input.equalsIgnoreCase("3")) {
 			
 			Ticket.purchaseTicket();
 			
@@ -102,11 +92,11 @@ public class Driver extends MainWindow {
 				break;
 			
 		}
-		if(input.equalsIgnoreCase("5")) {
+		if(input.equalsIgnoreCase("4")) {
 			
 			Airplane.seatCheck();
 			
-			System.out.println("Would you like to purchase check another seat (y/n)?");
+			System.out.println("Would you like to check another seat (y/n)?");
 			input = scan.nextLine();
 			if(input.equalsIgnoreCase("y"))
 				Airplane.seatCheck();
@@ -116,66 +106,14 @@ public class Driver extends MainWindow {
 
 		}
 		
+		if(input.equalsIgnoreCase("5")) {
+			
+			Airplane.reserveSeat();
+			
+		}
+		
 		if(input.equalsIgnoreCase("exit")) 
 			System.exit(0);
-}	
-		// oooooof rip gia
-		
-
-		
-		//waitList.print();
-		
-		//System.out.println(Airplane.checkSeat(0,1));
-		//System.out.println(Airplane.checkSeat(2, 0));
-		
-
-		
-		
-	}
-	
-	public static String printTicketB52() {
-		String result;
-		Airplane liberator = new Airplane();
-		waitingClass waitList = new waitingClass();
-		Airplane.addTicketB52("timbim", "2241-5115", "Economy", "421-5456", 75, "5792D4T7", 500, "Needs to be in aisle");
-		Airplane.addTicketB52("derek", "2241-5115", "First Class", "421-5456", 75, "5792D4T7", 500, "N/A");
-	    result = liberator.toString();
-
-	     return result;
-	}
-	
-	public static String printTicketA6M1() {
-		String result;
-		Airplane liberator = new Airplane();
-		waitingClass waitList = new waitingClass();
-		Airplane.addTicketA6M1("timbim", "2241-5115", "Economy", "421-5456", 75, "5792D4T7", 500, "Needs to be in aisle");
-		Airplane.addTicketA6M1("derek", "2241-5115", "First Class", "421-5456", 75, "5792D4T7", 500, "N/A");
-	    result = liberator.toString();
-
-	     return result;
-	}
-	
-	static public String toAdult(adult ad)
-	{
-		
-		String result = ad.toString();
-		
-		return result;
-	}
-	
-	static public String toKid(kid k)
-	{
-		
-		String result = k.toString();
-		
-		return result;
-	}
-	
-	static public String toSenior(senior_citizen sc)
-	{
-		
-		String result = sc.toString();
-		
-		return result;
+}		
 	}
 }

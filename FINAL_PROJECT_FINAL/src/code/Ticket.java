@@ -3,7 +3,7 @@ package code;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Ticket {
+public class Ticket implements TickInterface {
 	
 	
 	double discount;
@@ -15,12 +15,13 @@ public class Ticket {
 	//double COST;
 	String flightNum;
 	String request;
+	int tPrice = 0;
 	boolean isWaiting;
-public	static double firstMod = 2;
-public	static double businessMod = 1.5;
+	public	static double firstMod = 2;
+	public	static double businessMod = 1.5;
 	public static	double econMod = 1;
 	public static double distance;
-public static	double totalPrice;
+	public static	double totalPrice;
 	
 	public Ticket(String name, String ID, String carriage, String pn, int disco, String flightN, int dist, String disability)
 	{
@@ -34,33 +35,27 @@ public static	double totalPrice;
 		else if(CL.equalsIgnoreCase("Business"))
 			totalPrice = distance*businessMod;
 		
-		else
+		else if (CL.equalsIgnoreCase("Economy"))
 			totalPrice = distance*econMod;
+		
+		else
+			totalPrice = distance*0;
 			
 		phone = pn;
 		discount = disco;
-		//totalPrice = price;
-	//	price = totalPrice;
 		flightNum = flightN;
 		request = disability;
 		isWaiting = false;
 		distance = dist;
 	}
 	
-	/*public double getPrice()
-	{
-		double result;
-		result = COST - discount;
-		
-		return result; 
-	}*/
-	
-	public static void purchaseTicket() {
+	public static void purchaseTicket() {  //purchaseTicket method is here so driver doesn't have so much code in it
 		
 		String name, id, clss, pn, dis, flight;
 		String fNum;
 		int seatRow, seatCol;
-		int disc, tPrice, dist;
+		int disc, dist;
+		int tPrice = 0;
 		
 		fNum = "0";
 		
@@ -111,14 +106,14 @@ public static	double totalPrice;
 		
 	}
 	
-	static public String toAdult(adult a)
-	{
-/*	String result =	"Name: " + NAME + "\n" +
-				 "ID: "   + id   + "\n" +
-				 "Gender: " + Passenger.GENDER + "\n" +
-				 "Age: " + Passenger.AGE + "\n" +
-				 "Reason of Travel: " + Passenger.TYPE; */
+	public int getPrice() {
 		
+		return tPrice ;
+		
+	}
+	
+	static public String toAdult(adult a)
+	{	
 		String result = a.toString();
 		
 	return result;
@@ -140,7 +135,7 @@ public static	double totalPrice;
 	}
 
 	
-	public String toString()
+	public String toString()  //prints the ticket info and includes a marker if person is on waiting list
 	{
 		
 		String result;
@@ -149,7 +144,6 @@ public static	double totalPrice;
 		result = "Name: " + NAME + "\n" +
 				 "ID: "   + id   + "\n" +
 				 "Class: " + CL + " - In Waiting List" +"\n" +
-				 "Flight ID: " + flightNum + "\n" +
 				 "Phone Number: " + phone + "\n" +
 				 "Total Price: $" + (totalPrice - discount) + "\n" +
 				 "Discount: $" + discount +"\n" +
@@ -158,7 +152,6 @@ public static	double totalPrice;
 		result = "Name: " + NAME + "\n" +
 				 "ID: "   + id   + "\n" +
 				 "Class: " + CL + "\n" +
-				 "Flight ID: " + flightNum + "\n" +
 				 "Phone Number: " + phone + "\n" +
 				 "Total Price: $" + (totalPrice - discount) + "\n" +
 				 "Distance: " + distance + "mi\n" +

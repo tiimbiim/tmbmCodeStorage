@@ -174,7 +174,7 @@ public class MainWindow {
 						
 						
 						
-						seatCheckLbl2.setText(Airplane.checkSeat(Integer.parseInt(seatRowText.getText()), Integer.parseInt(seatColText.getText())));
+					//	seatCheckLbl2.setText(Airplane.checkSeat(Integer.parseInt(seatRowText.getText()), Integer.parseInt(seatColText.getText())));
 						
 						//The button works and it sends back a message but it says that seats that are taken
 						//are empty
@@ -206,7 +206,7 @@ public class MainWindow {
 				seatRowLbl.setVisible(false);
 				checkSeat.setVisible(false);
 				
-				lblNewLabel.setText(Driver.printTicket());	
+		//		lblNewLabel.setText(Driver.printTicket());	
 			}
 			});
 	
@@ -224,7 +224,7 @@ public class MainWindow {
 				priceLabel.setVisible(false);
 				requestLabel.setVisible(false);
 				
-				lblNewLabel.setText(Driver.toAdult(Driver.a));	
+			//	lblNewLabel.setText(Driver.toAdult(Driver.a));	
 				//lblNewLabel.setText(testDriver.toKid(testDriver.c));
 				//lblNewLabel.setText(testDriver.toSenior(testDriver.b)); 
 			}
@@ -356,7 +356,7 @@ public class MainWindow {
 							public void widgetSelected(SelectionEvent e) {
 								double distance = MainWindow.flightDistance;
 								double totalPrice = MainWindow.fullPrice;
-								Driver.liberator.addTicket(nameText.getText(), IDText.getText(), classCombo.getText(), pnText.getText(), discount, MainWindow.fullPrice, flightNumb, MainWindow.flightDistance , requestLabel.getText());
+						//		Driver.liberator.addTicket(nameText.getText(), IDText.getText(), classCombo.getText(), pnText.getText(), discount, MainWindow.fullPrice, flightNumb, MainWindow.flightDistance , requestLabel.getText());
 								
 							}
 						});

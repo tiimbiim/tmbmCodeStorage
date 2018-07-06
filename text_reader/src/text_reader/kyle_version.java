@@ -16,13 +16,13 @@ public class kyle_version {
 	int searchIndex = 0;
 	int i=0;
 	int convert = 168;
-	PrintWriter out = new PrintWriter("Who online1-70.txt");
-	fr.add(null);
+	PrintWriter out = new PrintWriter("C:\\Users\\TV\\Desktop\\tmbm\\Who online1-70.csv");
+	fr.add(null); 
 	
 	System.out.println("A");
-	for(int loopNum = 1; loopNum<=convert;loopNum++)
+	for(int loopNum = 1; loopNum<90;loopNum++)
 	{
-		fr.add(new FileReader("C:\\Users\\shingo\\Desktop\\tmbm\\Tim\\check89.txt"));
+		fr.add(new FileReader("C:\\Users\\TV\\Desktop\\tmbm\\Tim\\check" + loopNum + ".txt"));
 	}
 	System.out.println("A");
     for(int loopNum = 101; loopNum<=convert;loopNum++)

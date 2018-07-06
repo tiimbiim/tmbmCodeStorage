@@ -12,13 +12,13 @@ public class Airplane {
 	public static Ticket[][] A6M1;
 	int count = 0;
 
-	public Airplane() {
+	public Airplane() {  //creates two arrays when instantiated
 		B52 = new Ticket[4][2];
 		A6M1 = new Ticket[4][2];
 		count = 0;
 	}
 
-	public static void addTicketB52(String NAME, String id, String CL, String phone, int discount, String flightN, int distance, String request ) {
+	public static void addTicketB52(String NAME, String id, String CL, String phone, int discount, String flightN, int distance, String request ) {  //adds a ticket to the b52 flight
 		
 		// checks for the next empty seat and if the customer has been placed in a seat
 		hasAdded = false;
@@ -38,7 +38,7 @@ public class Airplane {
 		}
 	}
 	
-public static void addTicketA6M1(String NAME, String id, String CL, String phone, int discount, String flightN, int distance, String request ) {
+public static void addTicketA6M1(String NAME, String id, String CL, String phone, int discount, String flightN, int distance, String request ) {  //adds ticket to the a6m1 flight
 		
 		// checks for the next empty seat and if the customer has been placed in a seat
 		hasAdded = false;
@@ -58,7 +58,7 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 		}
 	}
 	
-	public static String checkSeat(int seatRow, int seatCol, String flight)
+	public static String checkSeat(int seatRow, int seatCol, String flight)  //tells the user if a seat is taken or not
 	{
 		String result = "";
 		
@@ -85,7 +85,7 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 		
 	}
 	
-	public static void seatCheck() {
+	public static void seatCheck() {  //Allows the user to check a seat
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -104,45 +104,60 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 		
 		
 	}
-	/*
-	public static void removeFromFlight(int t, int v)
-	{
-		temp = new Ticket[10][10];
-		
-		for (int a = 0; a < B52.length; a++)
-			for (int b = 0; b < B52[a].length; b++)
-			{
-				B52[t][v] = temp[a][b];
-			}
-		
-		
-	}
-	*/
 	
 	public static void reserveSeat() {
 		
-		Scanner scan = new Scanner(System.in);
+Scanner scan = new Scanner(System.in);
+		
+		int seatRow, seatCol;
 		String flight;
-		int row, col;
 		
-		System.out.println("Please enter the desired flight and a row and column number");
-		System.out.print("Flight (liberator/zero): ");
+		System.out.println("Please enter a flight (liberator, zero), row, and column");
+		System.out.print("Flight: ");
 		flight = scan.nextLine();
-		System.out.print("Seat row: ");
-		row = scan.nextInt();
-		System.out.print("Column: ");
-		col = scan.nextInt();
+		System.out.print("Seat Row: ");
+		seatRow = scan.nextInt();
+		System.out.print("Seat Col: ");
+		seatCol = scan.nextInt();
 		
+		
+
 		if(flight.equalsIgnoreCase("liberator")) {
-			checkSeat(row, col, flight);
-			
+		 //System.out.println(B52[seatRow][seatCol]);
+		 
+		 if(B52[seatRow][seatCol] == null) {
+			 B52[seatRow][seatCol] = new Ticket("Reserved", "Reserved", "Reserved", "Reserved", 0, "Reserved", 0, "Reserved");
+		 	Airplane.printB52();
+		 	System.out.println("\n\n");
+		 	
+		 }
+		 
+		 else
+			 System.out.println("Seat " + seatRow + ", " + seatCol + " is already reserved or taken");
+		 System.out.println("\n\n");
+		 
+		 
 		}
 		
+	if(flight.equalsIgnoreCase("zero")) {
+		//System.out.println(A6M1[seatRow][seatCol]);
+		 
+		 if(A6M1[seatRow][seatCol] == null) {
+			 A6M1[seatRow][seatCol] = new Ticket("Reserved", "Reserved", "Reserved", "Reserved", 0, "Reserved", 0, "Reserved");
+		 
+			 Airplane.printA6M1();
+			 
+			 System.out.println("\n\n");
+		 }
+		 else 
+			 System.out.println("Seat " + seatRow + ", " + seatCol + " is already reserved or taken");
+		 System.out.println("\n\n");
 		
 		
 	}
+}
 
-	public void placeInPlane(waitingClass queue, String flight) {
+	public static void placeInPlane(waitingClass queue, String flight) {  //removes a passenger from the wait list and onto a plane
 		
 	if(flight.equalsIgnoreCase("liberator"))	{
 		for (int a = 0; a < B52.length; a++) {
@@ -164,8 +179,7 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 	}
 	
 	}
-
-	public static void printB52() {
+	public static void printB52() {  //prints out the b52 flight but returns it as a void
 		generateRandomFlightHeader();
 		
 		for (int a = 0; a < B52.length; a++) {
@@ -175,7 +189,7 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 		}
 	}
 	
-	public static void printA6M1() {
+	public static void printA6M1() {  //prints out the a6m1 flight but returns it as a void
 		generateRandomFlightHeader();
 		
 		for (int a = 0; a < A6M1.length; a++) {
@@ -185,7 +199,7 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 		}
 	}
 
-	public static void generateRandomNum() {
+	public static void generateRandomNum() {  //generates a random number for the flight ID
 		Random ran = new Random();
 		int fourDigit, singleDigit;
 		char singleChar;
@@ -198,7 +212,7 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 		
 	}
 	
-	public static void generateRandomLetter() {
+	public static void generateRandomLetter() {  //Generates a random letter for the flight ID
 		
 		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         char[] alpha = alphabet.toCharArray();
@@ -209,7 +223,7 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 		
 	}
 	
-	public static void generateDestination() {
+	public static void generateDestination() {  //generates a random destination which is printed in front after the flight number
 		
 		Random ran = new Random();
 		int selector;
@@ -271,7 +285,7 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 		
 	}
 	
-	public static void generateRandomFNum() {
+	public static void generateRandomFNum() {  //Generates the whole flight number
 		System.out.print("Flight ");
 		generateRandomNum();
 		generateRandomNum();
@@ -284,7 +298,7 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 		
 	}
 	
-	public static void generateRandomFlightHeader() {
+	public static void generateRandomFlightHeader() {  //generates the whole flight number + the destination
 		System.out.print("\tFlight ");
 		
 		generateRandomNum();
@@ -300,6 +314,7 @@ public static void addTicketA6M1(String NAME, String id, String CL, String phone
 		
 }
 
+	//The following two methods print out both flights
 
 public String toStringA6M1() {
 

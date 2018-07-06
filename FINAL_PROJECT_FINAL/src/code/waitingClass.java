@@ -5,23 +5,20 @@ public class waitingClass {
 
 	public static ArrayList<Ticket> waitList;
 
-	public waitingClass() {
+	public waitingClass() {  //creates an arrayList when instantiated
 		waitList = new ArrayList<Ticket>(4);
 	}
 
-	public void add(Ticket tick) {
+	public void add(Ticket tick) {  //allows user to add person to the waiting list
 		waitList.add(tick);
 		tick.isWaiting = true;
 	}
 
-	public void remove(int index) {
+	public void remove(int index) {  //also allows user to remove from waiting list
 		waitList.remove(index);
 	}
 
-	public void print() {
-		//System.out.println(waitList + "\n" + "Currently on waiting list");
-		//System.out.println(waitList);
-		
+	public void print() {  //prints the waiting list
 		String result = "";
 		
 		System.out.println("Waiting List: " + "\n");
@@ -33,7 +30,7 @@ public class waitingClass {
 	
 	
 
-	public Ticket giveSeat() {
+	public Ticket giveSeat() {  //removes passenger from the waiting list
 		if (waitList.size() <= 0) {
 			return null;
 		}

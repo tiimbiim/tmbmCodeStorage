@@ -41,7 +41,8 @@ public class fileReader_kyle_based {
 		for(int loopNum = 1; loopNum<90;loopNum++)
 		{
 			fr.add(new FileReader("C:\\Users\\shingo\\Desktop\\tmbm\\Junk\\Tim\\check" + loopNum + ".txt"));
-			f = new File(filename + loopNum + ".txt");
+			f = new File(filename + loopNum
+					+ ".txt");
         	sb.append(sdf.format(f.lastModified()));
         	sb.append(',');
         	sb.append('\n');

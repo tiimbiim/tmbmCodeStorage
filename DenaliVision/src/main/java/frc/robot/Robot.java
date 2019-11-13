@@ -318,7 +318,7 @@ public class Robot extends TimedRobot
 		 * double motorPower = 0.0; double rotation = 0.0;
 		 * 
 		 */
-
+			driveTrain.arcadeDrive(-drv.getY(Hand.kLeft), drv.getX(Hand.kRight));
 		if (visionValidity && drv.getTriggerAxis(Hand.kRight) >= 0.05 && drv.getTriggerAxis(Hand.kRight) < 0.75)
 		{
 			drv.setRumble(RumbleType.kLeftRumble, 0.5);
